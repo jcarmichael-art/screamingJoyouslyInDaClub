@@ -1,0 +1,1 @@
+//gets passed a function to change state in the heroPane component 
