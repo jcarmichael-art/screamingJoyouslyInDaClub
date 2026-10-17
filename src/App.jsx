@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import NavButtons from './components/test/test.jsx'
+import NavButtons from './components/navButton/navButton.jsx'
 
 import './App.css'
 
