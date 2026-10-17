@@ -1,14 +1,10 @@
 //gets passed a function to change state in the heroPane component 
 import { useState } from 'react';
 
-export default function NavButtons(setHeroPane)
+export default function NavButtons()
 {
 
     const list = {'buttons': ['chat', 'calendar']};
-
-    
-
-
 
     return  (
         <>
@@ -20,7 +16,7 @@ export default function NavButtons(setHeroPane)
         return (
             <>
             
-            <a><button >{button}</button></a>
+            <a>{button}</a>
 
             </>
         )
