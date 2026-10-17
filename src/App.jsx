@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import heropane from './components/heroPane/heroPane.jsx'
-import NavButtons from './components/NavButtons/NavButtons.jsx'
+
+import NavButtons from './components/test/test.jsx'
 
 import './App.css'
 

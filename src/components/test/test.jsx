@@ -1,5 +1,6 @@
 //gets passed a function to change state in the heroPane component 
 import { useState } from 'react';
+import styles from './navButtons.module.css'
 
 export default function NavButtons()
 {
@@ -11,24 +12,14 @@ export default function NavButtons()
         
         <div>
 
-        <a> {list.buttons.map((button) =>
+        {list.buttons.map((button) => 
         {
-        return (
-            <>
-            
-            <a>{button}</a>
-
-            </>
-        )
-
-        })} </a>
+            return <a> <button> {button} </button> </a>
+        })}
 
         </div>
 
         </>
     )
-
-
-
 
 }
