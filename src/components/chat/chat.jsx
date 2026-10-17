@@ -3,3 +3,16 @@
 
 // this will be reading and writing but is not creating anything new
 // doing the R and U in CRUD
+import { useState } from 'react';
+
+function Chat() {
+    const []
+
+    return (
+    <div>
+        <p>Welcome, Traveller!</p>
+    </div>
+    )
+}
+
+export default Chat

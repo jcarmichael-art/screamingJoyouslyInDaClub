@@ -1,19 +1,21 @@
 import { useState } from 'react'
 
-import NavButtons from './components/test/test.jsx'
-
 import './App.css'
+//delete later
+import Chat from './components/chat/chat.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    
     <div>
 
       <div>
-        <NavButtons />
+        <navButtons />
       </div>
+
       
     </div>
     </>
