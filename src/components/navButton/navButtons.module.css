@@ -1,0 +1,32 @@
+:root {
+  --backGroundColor: rgb(169, 183, 195);
+   --backGroundHighlight: rgb(189, 203, 215);
+}
+
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttons a {
+  display: block;
+}
+
+.buttons button {
+  width: 100%;
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: var(--backGroundColor);
+  color: #222;
+  font: inherit;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background: var(--backGroundHighlight);
+}

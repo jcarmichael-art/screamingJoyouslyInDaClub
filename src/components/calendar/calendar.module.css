@@ -1,0 +1,66 @@
+.calendar {
+  max-width: 420px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.calendarHeader h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* both rows use the same 7-column grid so they line up */
+.weekdayGrid,
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 0;
+}
+
+/* every direct child of the days grid is a day cell (works for div or button) */
+.daysGrid > * {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f1f3f5;
+  color: #222;
+  font: inherit;
+}
+
+/* blank cells stay visible but clearly different from real days */
+.otherMonth {
+  border: 1px dashed #b8bec7;
+  background: #9b9da0;
+}
+
+.daysGrid > .today {
+  border: 2px solid #3b82f6;
+  background: #eaf2ff;
+  font-weight: bold;
+}
+
+/* ready for when each day becomes a button */
+.daysGrid > button {
+  cursor: pointer;
+}
+
+.daysGrid > button:hover {
+  background: #e4e7eb;
+}

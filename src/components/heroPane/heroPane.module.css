@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: sans-serif;
+}
+
+/* wrapper around the nav buttons (the left column) */
+.NavButtons {
+  flex: 0 0 auto;
+}
+
+/* wrapper around whichever screen is showing (takes the remaining space) */
+.HeroPane {
+  flex: 1;
+  min-height: 300px;
+}
