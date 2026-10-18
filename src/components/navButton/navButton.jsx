@@ -1,20 +1,20 @@
 //gets passed a function to change state in the heroPane component 
-import { useState } from 'react';
+
 import styles from './navButtons.module.css'
 
-export default function NavButtons()
+export default function NavButtons({onAction})
 {
 
-    const list = {'buttons': ['chat', 'calendar']};
+    const heroPanes = {'buttons': ['chat', 'calendar']};
 
     return  (
         <>
         
         <div>
 
-        {list.buttons.map((button) => 
+        {heroPanes.buttons.map((button) => 
         {
-            return <a> <button> {button} </button> </a>
+            return <a> <button onClick={() => onAction(button)} > {button} </button> </a>
         })}
 
         </div>

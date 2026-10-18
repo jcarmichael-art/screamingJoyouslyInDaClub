@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import NavButtons from './components/navButton/navButton.jsx'
+
+import HeroPane from './components/heroPane/heroPane.jsx'
 
 import './App.css'
 
@@ -12,7 +13,7 @@ function App() {
     <div>
 
       <div>
-        <NavButtons />
+        <HeroPane />
       </div>
       
     </div>
