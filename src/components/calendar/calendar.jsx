@@ -8,3 +8,14 @@
 
 // this will be doing the C, R, U, and D in CRUD
 // 
+
+
+export default function Calendar()
+{
+    return (
+    <div>
+        <p>Welcome to the Calendar, Traveller!</p>
+    </div>
+
+    )
+}
