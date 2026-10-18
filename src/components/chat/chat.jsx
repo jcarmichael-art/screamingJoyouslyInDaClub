@@ -6,11 +6,11 @@
 import { useState } from 'react';
 
 function Chat() {
-    const [messages, setMessages] = useState([{ id: 1, sender: "narrator", text: "Welcome, Traveller"}])
+    //const [] this was throwing an error, sorry!
 
     return (
     <div>
-        <p>{messages[0]}</p>
+        <p>Welcome to the Chat, Traveller!</p>
     </div>
     )
 }
