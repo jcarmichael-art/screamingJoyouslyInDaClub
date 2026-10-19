@@ -9,6 +9,10 @@
 // this will be doing the C, R, U, and D in CRUD
 // 
 import { useState } from 'react'
+import FetchTask from './fetchTask.jsx'
+import Modal from './dayModal.jsx'
+import DayCell from './dayCell.jsx'
+
 import Styles from './calendar.module.css'
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -17,6 +21,8 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep',
 
 export default function Calendar()
 {
+    const [close, setClose] = useState(false);
+
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const year = currentDate.getFullYear();
@@ -47,16 +53,16 @@ export default function Calendar()
     {
         currentMonthDays = day;
         const isToday = new Date().toDateString() === new Date(year, month, day).toDateString();
-        calendarCells.push(<div key={day} className={isToday ? `${Styles.today}` : ''}> 
-        {day}
-        </div>)
+        calendarCells.push(<DayCell key={day} year={year} month={month} day={day} isToday={isToday}/>)
+
     }
 
-    for (let j = currentMonthDays + lastMonthDays, count = 1; j < 42; j++, count++)
+    for (let j = currentMonthDays + lastMonthDays, count = 1; j < 6 * 7; j++, count++)
     {
         const nextDays = new Date(year, month + 1, count).getDate()
         calendarCells.push(<div key={`next-${j}`} className={Styles.otherMonth}> {nextDays} </div>);
     }
+
 
 
     return (
