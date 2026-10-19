@@ -14,7 +14,7 @@ export default function NavButtons({onAction})
 
         {heroPanes.buttons.map((button) => 
         {
-            return <a> <button onClick={() => onAction(button)} > {button} </button> </a>
+            return <a key={button}> <button onClick={() => onAction(button)} > {button} </button> </a>
         })}
 
         </div>
