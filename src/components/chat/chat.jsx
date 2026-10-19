@@ -8,7 +8,6 @@ import { useState } from 'react';
 function Chat() {
     const [messages, setMessages] = useState([
         {id: 1, sender: "narrator", text: "Welcome to the Chat, Traveller!"},
-        {id: 2, sender: "Maker", text: "Does this work?"}
     ])
     const [input, setInput] = useState("")
     
