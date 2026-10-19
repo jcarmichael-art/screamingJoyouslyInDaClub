@@ -13,12 +13,16 @@ function Chat() {
     const [input, setInput] = useState("")
     
     function handleSend() {
-        setMessages([...messages, 
-            {id: Date.now(), sender: "user", text: input}
+        if (input.trim() === "") {
+            setInput("")
+            return
+        }
+        else {setMessages([...messages, 
+            {id: Date.now(), sender: "user", text: input.trim()}
         ])
         setInput("")
+        }}
         
-    }
     return (
     <div>
         <div>
