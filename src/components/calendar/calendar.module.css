@@ -92,7 +92,7 @@
 }
 
 /* the X button in the top-right corner */
-.container > button {
+.container > button:first-child {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -106,8 +106,25 @@
   cursor: pointer;
 }
 
-.container > button:hover {
+.container > button:first-child:hover {
   background: #e4e7eb;
+}
+
+/* any other buttons in the modal (Save, etc.) */
+.container > button:not(:first-child) {
+  margin-top: 12px;
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  cursor: pointer;
+}
+
+.container > button:not(:first-child):disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 /* the button inside each day cell fills the whole cell */

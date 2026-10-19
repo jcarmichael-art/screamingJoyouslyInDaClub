@@ -2,6 +2,9 @@
 
 import styles from './navButtons.module.css'
 
+
+
+
 export default function NavButtons({onAction})
 {
 

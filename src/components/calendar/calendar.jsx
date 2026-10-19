@@ -18,9 +18,15 @@ import Styles from './calendar.module.css'
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+    //const date = new Date.now()
+
+    //const apiObj = {'team': 1, 'body': {'type': 'task', 'date': {date}, 'content': 'take out trash'}}
 
 export default function Calendar()
 {
+
+
+
     const [close, setClose] = useState(false);
 
     const [currentDate, setCurrentDate] = useState(new Date());
