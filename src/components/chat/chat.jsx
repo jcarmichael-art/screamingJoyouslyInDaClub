@@ -11,6 +11,14 @@ function Chat() {
         {id: 2, sender: "Maker", text: "Does this work?"}
     ])
     const [input, setInput] = useState("")
+    
+    function handleSend() {
+        setMessages([...messages, 
+            {id: Date.now(), sender: "user", text: input}
+        ])
+        setInput("")
+        
+    }
     return (
     <div>
         <div>
@@ -23,6 +31,7 @@ function Chat() {
                 setInput(e.target.value)
             } />
         </div>
+        <button onClick={handleSend}>Send</button>
     </div>
     )
 }
