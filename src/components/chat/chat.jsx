@@ -22,7 +22,7 @@ function Chat() {
         ])
         setInput("")
         }}
-        
+
     return (
     <div>
         <div>
@@ -33,7 +33,11 @@ function Chat() {
         <div>
             <input value={input} onChange={(e) => 
                 setInput(e.target.value)
-            } />
+            } onKeyDown={(e) =>
+                {if (e.key === "Enter") {
+                    handleSend()
+                }
+            }}/>
         </div>
         <button onClick={handleSend}>Send</button>
     </div>
