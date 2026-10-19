@@ -7,10 +7,10 @@ export default function NavButtons({onAction})
 
     const heroPanes = {'buttons': ['chat', 'calendar']};
 
-    return  (
+    return (
         <>
         
-        <div>
+        <div className={styles.buttons}>
 
         {heroPanes.buttons.map((button) => 
         {

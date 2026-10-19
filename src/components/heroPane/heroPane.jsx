@@ -16,13 +16,13 @@ export default function HeroPane()
 
     return (
         <>
-        <div>
+        <div className={Styles.container}>
 
-        <div>
+        <div className={Styles.NavButtons}>
         <NavButtons onAction={setHero}/>
         </div>
 
-        <div>
+        <div className={Styles.HeroPane}>
         {hero === 'chat' ? <Chat /> : <div></div>}
         {hero === 'calendar' ? <Calendar /> : <div></div>}
         </div>
