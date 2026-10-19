@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Styles from './calendar.module.css';
-import sendRequest from './sendRequest';
+import sendRequest from '../helpers/sendRequest';
 
 
 
