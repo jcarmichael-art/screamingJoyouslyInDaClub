@@ -48,6 +48,7 @@ export default function Modal({setReload, todayTasks, date, onClose})
                 return (
                     <>
                     <a> <button onClick={() => setTask(task)}> {task.data_json.content} </button> </a>
+                    <p>Level: {task.data_json.level}</p>
                     </>
                 )
             })}
