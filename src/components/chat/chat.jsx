@@ -29,7 +29,8 @@ function Chat() {
     ])
     function handleChoice(choice) {
         setMessages([...messages,
-            {id: Date.now(), sender: "user", text: choice.text}
+            {id: Date.now(), sender: "user", text: choice.text},
+            {id: Date.now() + 1, sender: "narrator", text: "The traveller nods"}
         ])
     }
 
