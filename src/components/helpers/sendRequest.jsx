@@ -7,7 +7,7 @@
 //const deleteObj = {'team': 2, 'id': 2}
 // delete needs a team and an id
 
-//const updateObj = {'type': 'task', 'level': 2, 'points': 0, 'date': date, 'content': 'take out trash'}
+// const updateObj = {'type': 'task', 'level': 2, 'points': 0, 'date': date, 'content': 'take out trash'}
 // update needs just the data that goes into body
 // it gets team and id from the query argument
 
@@ -16,8 +16,10 @@
 // "query" can be left empty if you're not using update
 
 
-export default async function sendRequest(opp, obj, query )
+export default async function sendRequest(opp, object, query )
 {
+
+    
     if (!query)
     {
         query = ''
@@ -31,7 +33,7 @@ export default async function sendRequest(opp, obj, query )
                 { 
                     'Content-Type': 'application/json' 
                 },
-            body: JSON.stringify(obj),
+            body: JSON.stringify(object),
         })        
 
         if (!response.ok) 
