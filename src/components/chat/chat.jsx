@@ -22,6 +22,18 @@ function Chat() {
         setInput("")
         }}
 
+    const [choices, setChoices] = useState([
+        {option: 1, text: "Hello"},
+        {option: 2, text: "How are you?"},
+        {option: 3, text: "Good Bye"}
+    ])
+    function handleChoice(choice) {
+        setMessages([...messages,
+            {id: Date.now(), sender: "user", text: choice.text},
+            {id: Date.now() + 1, sender: "narrator", text: "The traveller nods"}
+        ])
+    }
+
     return (
     <div>
         <div>
@@ -29,6 +41,11 @@ function Chat() {
                 <p key={message.id}>{message.text}</p>
             ))}
         </div>
+        {choices.map((choice) => (
+            <button key={choice.option} onClick={(e) =>
+                handleChoice(choice)
+            }>{choice.text}</button>
+        ))}
         <div>
             <input value={input} onChange={(e) => 
                 setInput(e.target.value)
