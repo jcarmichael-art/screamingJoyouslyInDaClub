@@ -3,15 +3,41 @@
 
 //alternate display components will be imported and activated in here based on what happens inside navButtons
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+
 import NavButtons from '../navButton/navButton';
 import Chat from '../chat/chat';
 import Calendar from '../calendar/calendar';
+import getData from '../helpers/getData';
 
 import Styles from './heroPane.module.css';
 
 export default function HeroPane()
 {
+    const [reload, setReload] = useState(false)
+    const [chats, setChats] = useState([])
+    const [tasks, setTasks] = useState([])
+    const [error, setError] = useState('')
+
+    useEffect(() =>
+    {
+        async function load() 
+        {
+            try
+            {
+                const { chats: loadedChats, tasks: loadedTasks } = await getData();
+                setChats(loadedChats);
+                setTasks(loadedTasks);
+            } catch (err)
+            {
+                console.error(err);
+                setError("Couldn't load your tasks.")
+            }
+        }
+        load();
+    }, [reload])
+
     const [hero, setHero] = useState('calendar')
 
     return (
@@ -24,7 +50,7 @@ export default function HeroPane()
 
         <div className={Styles.HeroPane}>
         {hero === 'chat' ? <Chat /> : <div></div>}
-        {hero === 'calendar' ? <Calendar /> : <div></div>}
+        {hero === 'calendar' ? <Calendar tasks={tasks} setReload={setReload}/> : <div></div>}
         </div>
 
         </div>

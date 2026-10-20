@@ -19,7 +19,7 @@
 export default async function sendRequest(opp, object, query )
 {
 
-    
+
     if (!query)
     {
         query = ''

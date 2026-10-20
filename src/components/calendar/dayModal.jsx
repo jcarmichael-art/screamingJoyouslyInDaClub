@@ -4,13 +4,15 @@ import sendPost from '../helpers/sendPost';
 
 
 
-export default function Modal({date, data, onClose})
+export default function Modal({setReload, todayTasks, date, onClose})
 {
     const [error, setError] = useState('');
     const [save, setSave] = useState('');
 
     const [select, setSelect] = useState(1)
     const [text, setText] = useState('test')
+
+    const [tasks, setTask] = useState()
 
 
     const handleChange = (event) =>
@@ -40,7 +42,18 @@ export default function Modal({date, data, onClose})
 
         </div>
 
-        <button disabled={text ? false : true} onClick={() => sendPost(setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>save</button>  
+        <div>
+            {todayTasks.map((task) =>
+            {
+                return (
+                    <>
+                    <a> <button onClick={() => setTask(task)}> {task.data_json.content} </button> </a>
+                    </>
+                )
+            })}
+        </div>
+
+        <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>save</button>  
   
          {save && <p>{save}</p>}
          {error && <p>{error}</p>}

@@ -1,15 +1,16 @@
 import sendRequest from "./sendRequest";
 
-export default async function saveHandle(setSave, setError, object)
+export default async function saveHandle(setReload, setSave, setError, object)
 {
 
     setError('');
-    setSave('');
-
+    setSave('loading');
+    setReload(false)
     try
     {
         await sendRequest('post', object, '');
         setSave('Success!')
+        setReload(true)
     }
     catch (err)
     {

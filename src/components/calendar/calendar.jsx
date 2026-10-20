@@ -22,7 +22,7 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep',
 
     //const apiObj = {'team': 1, 'body': {'type': 'task', 'date': {date}, 'content': 'take out trash'}}
 
-export default function Calendar()
+export default function Calendar({tasks, setReload})
 {
 
 
@@ -59,7 +59,7 @@ export default function Calendar()
     {
         currentMonthDays = day;
         const isToday = new Date().toDateString() === new Date(year, month, day).toDateString();
-        calendarCells.push(<DayCell key={day} year={year} month={month} day={day} isToday={isToday}/>)
+        calendarCells.push(<DayCell setReload={setReload} tasks={tasks} key={day} year={year} month={month} day={day} isToday={isToday}/>)
 
     }
 
