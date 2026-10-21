@@ -3,24 +3,20 @@
 
 // this will be reading and writing but is not creating anything new
 // doing the R and U in CRUD
+const postObj = {'team': 2, 'body': {'type': 'chat',
+                                    'story': 'A knight on a road, where does he go?',
+                                    'options': ['Home', 'Fairyland', 'Highway 7'],
+                                    'results':[['He finds three free hookers, he gets an aneurism'], ['He gets made a magical imp', "He's swallowed whole"], ['He fights a mythical beast and wins', 'He loses to the mythical beast and becomes a piece of the pavement']],
+                                    'choice': '',
+                                    'date': ''}}
 import { useState } from 'react';
 
 function Chat() {
+    
     const [messages, setMessages] = useState([
         {id: 1, sender: "narrator", text: "Welcome to the Chat, Traveller!"},
     ])
     const [input, setInput] = useState("")
-    
-    function handleSend() {
-        if (input.trim() === "") {
-            setInput("")
-            return
-        }
-        else {setMessages([...messages, 
-            {id: Date.now(), sender: "user", text: input.trim()}
-        ])
-        setInput("")
-        }}
 
     const [choices, setChoices] = useState([
         {option: 1, text: "Hello"},
@@ -46,16 +42,6 @@ function Chat() {
                 handleChoice(choice)
             }>{choice.text}</button>
         ))}
-        <div>
-            <input value={input} onChange={(e) => 
-                setInput(e.target.value)
-            } onKeyDown={(e) =>
-                {if (e.key === "Enter") {
-                    handleSend()
-                }
-            }}/>
-        </div>
-        <button onClick={handleSend}>Send</button>
     </div>
     )
 }

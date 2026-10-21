@@ -10,6 +10,7 @@ import NavButtons from '../navButton/navButton';
 import Chat from '../chat/chat';
 import Calendar from '../calendar/calendar';
 import getData from '../helpers/getData';
+import Chat2 from '../chat/chat2';
 
 import Styles from './heroPane.module.css';
 
@@ -27,7 +28,7 @@ export default function HeroPane()
             try
             {
                 const { chats: loadedChats, tasks: loadedTasks } = await getData();
-                setChats(loadedChats);
+                setChats( );
                 setTasks(loadedTasks);
             } catch (err)
             {
@@ -49,7 +50,7 @@ export default function HeroPane()
         </div>
 
         <div className={Styles.HeroPane}>
-        {hero === 'chat' ? <Chat /> : <div></div>}
+        {hero === 'chat' ? <Chat2 chats={chats}/> : <div></div>}
         {hero === 'calendar' ? <Calendar tasks={tasks} setReload={setReload}/> : <div></div>}
         </div>
 
