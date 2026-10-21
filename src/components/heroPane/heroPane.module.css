@@ -1,20 +1,41 @@
 .container {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  max-width: 640px;
+  gap: 24px;
+  width: min(100% - 48px, 1040px);
   margin: 0 auto;
-  padding: 16px;
-  font-family: sans-serif;
+  padding: 48px 0;
+  font-family: var(--sans);
 }
 
-/* wrapper around the nav buttons (the left column) */
 .NavButtons {
-  flex: 0 0 auto;
+  flex: 0 0 172px;
+  padding: 12px;
+  border: 1px solid rgba(226, 231, 242, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow-sm);
 }
 
-/* wrapper around whichever screen is showing (takes the remaining space) */
 .HeroPane {
-  flex: 1;
-  min-height: 300px;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 420px;
+  padding: 28px;
+  border: 1px solid rgba(226, 231, 242, 0.9);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: min(100% - 28px, 560px);
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .NavButtons { flex: auto; width: 100%; padding: 8px; }
+  .HeroPane { width: 100%; min-height: 0; padding: 18px 14px; border-radius: 20px; }
 }

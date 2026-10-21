@@ -1,32 +1,35 @@
-:root {
-  --backGroundColor: rgb(169, 183, 195);
-   --backGroundHighlight: rgb(189, 203, 215);
-}
-
-
-
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.buttons a {
-  display: block;
-}
+.buttons a { display: block; text-decoration: none; }
 
 .buttons button {
   width: 100%;
-  padding: 8px 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: var(--backGroundColor);
-  color: #222;
+  padding: 11px 16px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #68738b;
   font: inherit;
+  font-size: 0.95rem;
+  font-weight: 650;
   text-transform: capitalize;
+  text-align: left;
   cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .buttons button:hover {
-  background: var(--backGroundHighlight);
+  background: #f2f4ff;
+  color: #4e5fc9;
+}
+
+.buttons button:active { transform: scale(0.985); }
+
+@media (max-width: 700px) {
+  .buttons { flex-direction: row; }
+  .buttons button { text-align: center; }
 }

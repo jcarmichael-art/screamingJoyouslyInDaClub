@@ -31,7 +31,7 @@ export default function DayCell({setReload, tasks, year, month, day, isToday})
 {
     const [close, setClose] = useState(false)
 
-    const date = makeString(year, month, day)
+    const date = makeString(year, month + 1, day)
     const todayTasks = filterToday(date, tasks)
 
     return (

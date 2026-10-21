@@ -9,8 +9,6 @@
 // this will be doing the C, R, U, and D in CRUD
 // 
 import { useState } from 'react'
-import FetchTask from './fetchTask.jsx'
-import Modal from './dayModal.jsx'
 import DayCell from './dayCell.jsx'
 
 import Styles from './calendar.module.css'
