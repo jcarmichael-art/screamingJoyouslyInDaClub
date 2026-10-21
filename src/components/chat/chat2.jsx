@@ -4,13 +4,15 @@ import sendUpdate from '../helpers/sendUpdate'
 
 import styles from './chat.module.css'
 
+import getRandomChat from "../helpers/getRandomChat"
+
 //I was setting up the updater to the chat choice and date
 // optionSelect will be what calls the sendUpdate
 // still need to make something that selects a random chat out of the array
 
 
-
 export default function Chat2({chats}) {
+    console.log(chats)
     const [option, setOption] = useState()
     const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -20,6 +22,8 @@ export default function Chat2({chats}) {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const day = currentDate.getDate();
+
+    const [random, setRandom] = useState(() => getRandomChat(chats))
 
 
     function makeString(year, month, day)
@@ -65,15 +69,15 @@ export default function Chat2({chats}) {
         <>
         <div className={styles.chat2}>
             <p className={styles.chat2__story}>
-            {chats[2].data_json.story}
+            {random.data_json.story}
             </p>
         </div>
         <div>
-            {chats[2].data_json.options.map((option, index) =>
+            {random.data_json.options.map((option, index) =>
             {
                 return (
                     <div  key={option}>
-                        <button className={styles.btn} onClick={() => optionSelect(index, chats[2])} >{option}</button>
+                        <button className={styles.btn} onClick={() => optionSelect(index, random)} >{option}</button>
                     </div>
                 )
             })}
