@@ -34,10 +34,10 @@ export default function Chat2({chats}) {
 
     let stringDate = makeString(year, month + 1, day)
 
-    function optionSelect(index, chat)
+    function optionSelect(index, chats)
     {
-        chat.data_json.choice = index;
-        chat.data_json.date = stringDate;
+        chats.data_json.choice = index;
+        chats.data_json.date = stringDate;
         sendUpdate()
     }
 
@@ -72,11 +72,9 @@ export default function Chat2({chats}) {
             {chats[2].data_json.options.map((option, index) =>
             {
                 return (
-                    <>
-                    <div>
+                    <div  key={option}>
                         <button className={styles.btn} onClick={() => optionSelect(index, chats[2])} >{option}</button>
                     </div>
-                    </>
                 )
             })}
         </div>

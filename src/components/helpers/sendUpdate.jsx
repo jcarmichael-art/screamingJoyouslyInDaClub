@@ -1,6 +1,6 @@
 import sendRequest from "./sendRequest";
 
-export default async function saveHandle(setReload, setSave, setError, selectedTask, update)
+export default async function saveHandle(setTask, setReload, setSave, setError, selectedTask, update)
 {
 
     setError('');
@@ -11,6 +11,7 @@ export default async function saveHandle(setReload, setSave, setError, selectedT
         await sendRequest('update', update, `?teamId=2&recordId=${selectedTask.id}`);
         setSave('Success!')
         setReload(true)
+        setTask({'id': selectedTask.id, 'data_json': update})
     }
     catch (err)
     {
