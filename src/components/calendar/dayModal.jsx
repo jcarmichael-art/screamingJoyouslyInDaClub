@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Styles from './calendar.module.css';
 import sendPost from '../helpers/sendPost';
 import sendDelete from '../helpers/sendDelete';
+import sendUpdate from '../helpers/sendUpdate';
 
 
 
@@ -19,6 +20,11 @@ export default function Modal({setReload, todayTasks, date, onClose})
     const handleChange = (event) =>
     {
         setText(event.target.value)
+    }
+    function selectHandle(task)
+    {
+        setTask(task)
+        setText(task.data_json.content)
     }
 
 
@@ -47,15 +53,16 @@ export default function Modal({setReload, todayTasks, date, onClose})
             {
                 return (
                     <>
-                    <a> <button onClick={() => setTask(task)}> {task.data_json.content} </button> </a>
+                    <a> <button onClick={() => selectHandle(task)}> {task.data_json.content} {task.data_json.points ? 'Complete' : 'Not Complete'} </button> </a>
                     <p>Level: {task.data_json.level}</p>
                     </>
                 )
             })}
         </div>
 
-        <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>Save Task</button>  
-  
+        <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>Save New Task</button>  
+        <button disabled={tasks ? false : true} onClick={() => sendDelete(setReload, setSave, setError, tasks)}>Delete Selected Task</button>
+        <button disabled={tasks ? false : true} onClick={() => sendUpdate(setReload, setSave, setError, tasks, {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text})}>Submit Edit</button>
          {save && <p>{save}</p>}
          {error && <p>{error}</p>}
         </div>
