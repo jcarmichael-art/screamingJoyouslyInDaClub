@@ -1,5 +1,5 @@
 
-export default function Chat2({chats}) {
+export default function Chat2(chats) {
 
     return (
         <div>
