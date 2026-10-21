@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Styles from './calendar.module.css';
 import sendPost from '../helpers/sendPost';
+import sendDelete from '../helpers/sendDelete';
 
 
 
@@ -10,7 +11,7 @@ export default function Modal({setReload, todayTasks, date, onClose})
     const [save, setSave] = useState('');
 
     const [select, setSelect] = useState(1)
-    const [text, setText] = useState('test')
+    const [text, setText] = useState('')
 
     const [tasks, setTask] = useState()
 
@@ -19,7 +20,6 @@ export default function Modal({setReload, todayTasks, date, onClose})
     {
         setText(event.target.value)
     }
-
 
 
     return (
@@ -54,7 +54,7 @@ export default function Modal({setReload, todayTasks, date, onClose})
             })}
         </div>
 
-        <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>save</button>  
+        <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>Save Task</button>  
   
          {save && <p>{save}</p>}
          {error && <p>{error}</p>}

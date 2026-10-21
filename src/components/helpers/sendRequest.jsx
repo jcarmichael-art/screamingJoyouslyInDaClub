@@ -1,7 +1,7 @@
 //example data
-// objects need to be formatted differently depending on the operatiob being preformed
+// objects need to be formatted differently depending on the operatiob being preformed                                
 
-//const postObj = {'team': 2, 'body': {'type': 'task', 'level': 1, 'points': 0, 'date': date, 'content': 'take out trash'}}
+
 // post needs the team and a body. body holds all the data we're adding
 
 //const deleteObj = {'team': 2, 'id': 2}
