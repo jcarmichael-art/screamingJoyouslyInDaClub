@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 
 
 import NavButtons from '../navButton/navButton';
-import Chat from '../chat/chat';
 import Calendar from '../calendar/calendar';
 import getData from '../helpers/getData';
 import Chat2 from '../chat/chat2';
@@ -28,7 +27,7 @@ export default function HeroPane()
             try
             {
                 const { chats: loadedChats, tasks: loadedTasks } = await getData();
-                setChats( );
+                setChats(loadedChats);
                 setTasks(loadedTasks);
             } catch (err)
             {
