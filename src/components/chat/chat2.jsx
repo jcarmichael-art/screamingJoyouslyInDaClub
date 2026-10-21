@@ -12,7 +12,6 @@ function getStory() {
 }
 
 export default function Chat2(chats) {
-
     return (
         <div>
             <p>Hello!</p>
