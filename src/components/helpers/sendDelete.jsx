@@ -5,6 +5,7 @@ export default async function saveHandle(setReload, setSave, setError, object)
     const delObj = {};
     delObj.team = 2;
     delObj.id = object.id;
+    
 
     setError('');
     setSave('loading');

@@ -63,8 +63,8 @@ export default function Modal({setReload, todayTasks, date, onClose})
 
         <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>Save New Task</button>  
         <button disabled={tasks ? false : true} onClick={() => sendDelete(setReload, setSave, setError, tasks)}>Delete Selected Task</button>
-        <button disabled={tasks ? false : true} onClick={() => sendUpdate(setTask, setReload, setSave, setError, tasks, {'type': 'task', 'level': select, 'points': tasks.data_json.points, 'date': date, 'content': text})}>Submit Edit</button>
-        <button disabled={tasks ? false : true} onClick={() => sendUpdate(setTask, setReload, setSave, setError, tasks, {'type': 'task', 'level': tasks.data_json.level, 'points': tasks.data_json.level, 'date': date, 'content': text})}>Mark Complete</button>
+        <button disabled={tasks ? false : true} onClick={() => sendUpdate(tasks, {'type': 'task', 'level': select, 'points': tasks.data_json.points, 'date': date, 'content': text}, setSave, setError, setReload, setTask)}>Submit Edit</button>
+        <button disabled={tasks ? false : true} onClick={() => sendUpdate(tasks, {'type': 'task', 'level': tasks.data_json.level, 'points': tasks.data_json.level, 'date': date, 'content': text}, setSave, setError, setReload, setTask)}>Mark Complete</button>
          {save && <p>{save}</p>}
          {error && <p>{error}</p>}
         </div>

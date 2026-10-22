@@ -1,6 +1,6 @@
 import sendRequest from "./sendRequest";
 
-export default async function saveHandle(setTask, setReload, setSave, setError, selectedTask, update)
+export default async function saveHandle(selectedTask, update, setSave, setError, setReload, setTask)
 {
 
     setError('');
