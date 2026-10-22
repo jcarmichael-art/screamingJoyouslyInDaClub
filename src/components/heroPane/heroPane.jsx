@@ -21,6 +21,7 @@ export default function HeroPane()
     const [error, setError] = useState('')
     const [save, setSave] = useState('')
     const [loaded, setLoaded] = useState(false)
+    const [hero, setHero] = useState('')
 
     useEffect(() =>
     {
@@ -36,6 +37,11 @@ export default function HeroPane()
                 setTasks(loadedTasks);
                 setLoaded(true)
                 setSave('Loading: Success')
+                if (!hero)
+                {
+                    setHero('calendar')
+                }
+
             } catch (err)
             {
                 setSave('Loading: Failed')
@@ -47,7 +53,7 @@ export default function HeroPane()
         load();
     }, [reload])
 
-    const [hero, setHero] = useState('')
+
 
     return (
         <>
