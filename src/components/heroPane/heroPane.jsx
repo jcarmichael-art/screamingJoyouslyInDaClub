@@ -26,6 +26,7 @@ export default function HeroPane()
     {
         async function load() 
         {
+            setSave('loading:')
             try
             {
                 const { chats: loadedChats, tasks: loadedTasks } = await getData();
@@ -59,6 +60,9 @@ export default function HeroPane()
         <div className={Styles.HeroPane}>
         {hero === 'chat' ? <Chat2 chats={chats} tasks={tasks} setReload={setReload} /> : <div></div>}
         {hero === 'calendar' ? <Calendar tasks={tasks} setReload={setReload}/> : <div></div>}
+        </div>
+        <div>
+        {save && <p>{save}</p>}
         </div>
 
         </div>

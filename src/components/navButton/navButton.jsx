@@ -21,8 +21,6 @@ export default function NavButtons({onAction, loaded, error, save})
             return<button key={button} disabled={loaded === true ? false : true} onClick={() => onAction(button)} > {button} </button>
         })}
 
-        {save && <p>{save}</p>}
-
         </div>
 
         </>

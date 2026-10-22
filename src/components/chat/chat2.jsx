@@ -73,8 +73,6 @@ export default function Chat2({chats, todayTasks, setReload}) {
 
                     <Tally chat={chats[i]} tasks={todayTasks} sendUpdate={sendUpdate} setReload={setReload}/>
 
-
-                {save && <p>{save}</p>}
                 </div>
                 </>
             )
