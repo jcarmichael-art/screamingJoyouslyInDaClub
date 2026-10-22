@@ -29,7 +29,11 @@ export default function Chat2({chats, todayTasks, setReload}) {
 
 
 
-    const [random, setRandom] = useState(() => getRandomChat(chats))
+    //const [random, setRandom] = useState(() => getRandomChat(chats))
+
+    let random = getRandomChat(chats)
+
+    
 
 
     function makeString(year, month, day)
@@ -67,7 +71,7 @@ export default function Chat2({chats, todayTasks, setReload}) {
                 <div>
 
 
-                    <Tally chat={chats[i]} tasks={todayTasks} sendUpdate={sendUpdate} setReload={setReload} />
+                    <Tally chat={chats[i]} tasks={todayTasks} sendUpdate={sendUpdate} setReload={setReload}/>
 
 
                 {save && <p>{save}</p>}

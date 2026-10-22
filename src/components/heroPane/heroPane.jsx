@@ -19,6 +19,8 @@ export default function HeroPane()
     const [chats, setChats] = useState([])
     const [tasks, setTasks] = useState([])
     const [error, setError] = useState('')
+    const [save, setSave] = useState('')
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() =>
     {
@@ -27,10 +29,16 @@ export default function HeroPane()
             try
             {
                 const { chats: loadedChats, tasks: loadedTasks } = await getData();
+
+                
                 setChats(loadedChats);
                 setTasks(loadedTasks);
+                setLoaded(true)
+                setSave('Loading: Success')
             } catch (err)
             {
+                setSave('Loading: Failed')
+                setLoaded(false)
                 console.error(err);
                 setError("Couldn't load your tasks.")
             }
@@ -38,14 +46,14 @@ export default function HeroPane()
         load();
     }, [reload])
 
-    const [hero, setHero] = useState('calendar')
+    const [hero, setHero] = useState('')
 
     return (
         <>
         <div className={Styles.container}>
 
         <div className={Styles.NavButtons}>
-        <NavButtons onAction={setHero}/>
+        <NavButtons onAction={setHero} loaded={loaded} error={error} save={save}/>
         </div>
 
         <div className={Styles.HeroPane}>

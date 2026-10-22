@@ -5,7 +5,7 @@ import styles from './navButtons.module.css'
 
 
 
-export default function NavButtons({onAction})
+export default function NavButtons({onAction, loaded, error, save})
 {
 
     const heroPanes = {'buttons': ['chat', 'calendar']};
@@ -17,8 +17,11 @@ export default function NavButtons({onAction})
 
         {heroPanes.buttons.map((button) => 
         {
-            return <a key={button}> <button onClick={() => onAction(button)} > {button} </button> </a>
+            
+            return<button key={button} disabled={loaded === true ? false : true} onClick={() => onAction(button)} > {button} </button>
         })}
+
+        {save && <p>{save}</p>}
 
         </div>
 

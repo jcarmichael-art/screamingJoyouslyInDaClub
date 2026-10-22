@@ -9,13 +9,13 @@ export default async function saveHandle(selectedTask, update, setSave, setError
     try
     {
         await sendRequest('update', update, `?teamId=2&recordId=${selectedTask.id}`);
-        setSave('Success!')
+        setSave('API Update: Success!')
         setReload(true)
         setTask({'id': selectedTask.id, 'data_json': update})
     }
     catch (err)
     {
-        setSave('Failed')
+        setSave('API update: Failed')
         console.error(err);
         setError(`Couldn't save, try again`);
     }
