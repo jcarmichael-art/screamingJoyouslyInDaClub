@@ -15,6 +15,7 @@ export default async function saveHandle(selectedTask, update, setSave, setError
     }
     catch (err)
     {
+        setSave('Failed')
         console.error(err);
         setError(`Couldn't save, try again`);
     }

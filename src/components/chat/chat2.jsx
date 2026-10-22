@@ -13,9 +13,7 @@ import Tally from './tally';
 // still need to make something that selects a random chat out of the array
 
 
-export default function Chat2({chats, tasks, setReload}) {
-    console.log(tasks)
-
+export default function Chat2({chats, todayTasks, setReload}) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -27,6 +25,7 @@ export default function Chat2({chats, tasks, setReload}) {
 
     const [error, setError] = useState('');
     const [save, setSave] = useState('');
+    const [tasks, setTasks] = useState('');
 
 
 
@@ -45,7 +44,7 @@ export default function Chat2({chats, tasks, setReload}) {
     {
         random.data_json.choice = index;
         random.data_json.date = date;
-        sendUpdate(random, {'type': 'chat', 'story': random.data_json.story, 'options':random.data_json.options, 'results': random.data_json.results, 'choice': index, 'date': date}, setSave, setError, setReload)
+        sendUpdate(random, {'type': 'chat', 'story': random.data_json.story, 'options':random.data_json.options, 'results': random.data_json.results, 'choice': index, 'date': date}, setSave, setError, setReload, setTasks)
     }
 
 
@@ -68,9 +67,10 @@ export default function Chat2({chats, tasks, setReload}) {
                 <div>
 
 
-                    <Tally chat={chats[i]} tasks={tasks} sendUpdate={sendUpdate} setReload={setReload} />
+                    <Tally chat={chats[i]} tasks={todayTasks} sendUpdate={sendUpdate} setReload={setReload} />
 
 
+                {save && <p>{save}</p>}
                 </div>
                 </>
             )

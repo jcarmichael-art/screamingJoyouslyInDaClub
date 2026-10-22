@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import styles from './chat.module.css'
 
-export default function Tally({chat, tasks, sendUpdate, setReload})
+export default function Tally({chat, todayTasks, sendUpdate, setReload})
 {
     const [error, setError] = useState('');
     const [save, setSave] = useState('');
+    const [tasks, setTasks] = useState('');
     
     const [flag, setFlag] = useState(null);
     function checkWin()
@@ -14,10 +15,10 @@ export default function Tally({chat, tasks, sendUpdate, setReload})
         let maxCount = 0
         for (let i = 0; i < tasks.length; i++)
         {
-            if (tasks[i].data_json.date === chat.data_json.date)
+            if (todayTasks[i].data_json.date === chat.data_json.date)
             {
-                count += Number(tasks[i].data_json.points);
-                maxCount += Number(tasks[i].data_json.level);
+                count += Number(todayTasks[i].data_json.points);
+                maxCount += Number(todayTasks[i].data_json.level);
             }
         }
 
@@ -34,10 +35,9 @@ export default function Tally({chat, tasks, sendUpdate, setReload})
     {
         return (
             <>
-            <p>Result: Success</p>
             <div className={styles.chat2}>
             <p>{chat.data_json.results[chat.data_json.choice][0]}</p>
-            <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload)}>
+            <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload, setTasks)}>
             <span>done</span>
             </button>
             </div>
@@ -48,10 +48,9 @@ export default function Tally({chat, tasks, sendUpdate, setReload})
     {
         return (
             <>
-            <p>Result: Fail</p>
             <div className={styles.chat2}>
             <p>{chat.data_json.results[chat.data_json.choice][1]}</p>
-            <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload)}>
+            <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload, setTasks)}>
             <span>done</span>
             </button>
             </div>
