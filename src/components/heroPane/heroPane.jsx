@@ -68,10 +68,6 @@ export default function HeroPane()
         {hero === 'calendar' ? <Calendar tasks={tasks} setReload={setReload}/> : <div></div>}
         {save && <p>{save}</p>}        
         </div>
-        <div>
-
-        </div>
-
         </div>
 
         </>
