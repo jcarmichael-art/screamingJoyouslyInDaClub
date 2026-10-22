@@ -53,7 +53,6 @@ export default function Chat2({chats, tasks, setReload}) {
     {
         if (chats[i].data_json.date)
         {
-                console.log(chats[i])
             return (
                 <>
                 <div className={styles.chat2}>
@@ -61,6 +60,11 @@ export default function Chat2({chats, tasks, setReload}) {
                     {chats[i].data_json.story}
                     </p>
                 </div>
+
+                <div className={styles.userTextBox}>
+                    <p className={styles.userchat}>•User: {chats[i].data_json.options[chats[i].data_json.choice]}</p>
+                </div>
+               
                 <div>
 
 

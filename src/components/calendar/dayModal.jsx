@@ -6,6 +6,7 @@ import sendUpdate from '../helpers/sendUpdate';
 
 
 
+
 export default function Modal({setReload, todayTasks, date, onClose})
 {
     const [error, setError] = useState('');
@@ -37,7 +38,7 @@ export default function Modal({setReload, todayTasks, date, onClose})
 
          <h1>{date}</h1>
         </div>
-        <div>
+        <div className={Styles.options}>
 
         <input type='text' value={text} onChange={handleChange} placeholder='Enter Task' />
 
@@ -49,7 +50,7 @@ export default function Modal({setReload, todayTasks, date, onClose})
 
         </div>
 
-        <div>
+        <div className={Styles.taskBox}>
             {todayTasks.map((task) =>
             {
                 return (
@@ -61,12 +62,14 @@ export default function Modal({setReload, todayTasks, date, onClose})
             })}
         </div>
 
+        <div className={Styles.buttonBox}>
         <button disabled={text ? false : true} onClick={() => sendPost(setReload, setSave, setError, {'team': 2, 'body': {'type': 'task', 'level': select, 'points': 0, 'date': date, 'content': text}})}>Save New Task</button>  
         <button disabled={tasks ? false : true} onClick={() => sendDelete(setReload, setSave, setError, tasks)}>Delete Selected Task</button>
         <button disabled={tasks ? false : true} onClick={() => sendUpdate(tasks, {'type': 'task', 'level': select, 'points': tasks.data_json.points, 'date': date, 'content': text}, setSave, setError, setReload, setTask)}>Submit Edit</button>
         <button disabled={tasks ? false : true} onClick={() => sendUpdate(tasks, {'type': 'task', 'level': tasks.data_json.level, 'points': tasks.data_json.level, 'date': date, 'content': text}, setSave, setError, setReload, setTask)}>Mark Complete</button>
          {save && <p>{save}</p>}
          {error && <p>{error}</p>}
+         </div>
         </div>
         </>
     )
