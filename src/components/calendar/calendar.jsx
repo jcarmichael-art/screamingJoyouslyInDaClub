@@ -14,7 +14,6 @@ import DayCell from './dayCell.jsx'
 import Styles from './calendar.module.css'
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     //const date = new Date.now()
 

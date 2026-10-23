@@ -1,15 +1,42 @@
-/* ---------- incoming message bubble (Tilly) ---------- */
+/* Trans flag palette
+   blue:  #5BCEFA
+   pink:  #F5A9B8
+   white: #FFFFFF
+*/
+
+/* ---------- chat window background (same blue panel as the calendar) ---------- */
+.chatWindow {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #7bd9fb 0%, #5BCEFA 100%);
+  box-shadow:
+    0 2px 4px rgba(20, 90, 130, 0.18),
+    0 12px 28px rgba(20, 90, 130, 0.28),
+    0 30px 70px rgba(20, 90, 130, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- incoming message bubble (character) ----------
+   A deeper blue than the window so the bubbles stand out against it. */
 .chat2 {
   width: fit-content;
   max-width: min(82%, 520px);
   margin: 10px auto 10px 0;
   padding: 12px 18px;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e8eaf5;
+  background: linear-gradient(180deg, #3fb9ee 0%, #229fd8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 20px 20px 20px 6px; /* small corner = the "tail" */
-  box-shadow: 0 4px 16px rgba(40, 50, 80, 0.08);
-  color: #30384b;
+  /* layered shadows so the bubble looks like it sits on top of the page */
+  box-shadow:
+    0 2px 4px rgba(20, 90, 130, 0.18),
+    0 10px 24px rgba(20, 90, 130, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #ffffff;
   font-family: Inter, system-ui, sans-serif;
 }
 
@@ -23,25 +50,33 @@
   white-space: pre-line;
   overflow-wrap: anywhere;
 
-  color: #414a60;
+  color: #ffffff;
   font-size: 15px;
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(20, 90, 130, 0.35);
 }
 
 /* the "done" button inside a result bubble */
 .chat2 > button {
   margin-top: 12px;
   padding: 6px 18px;
-  border: 0;
+  border: 1px solid #ffffff;
   border-radius: 999px;
-  background: #5365c9;
+  background: #F5A9B8;
   color: #fff;
   font: 600 14px Inter, system-ui, sans-serif;
+  box-shadow: 0 3px 8px rgba(20, 90, 130, 0.25);
   cursor: pointer;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .chat2 > button:hover {
-  background: #4252a8;
+  background: #f7bcc8;
+  box-shadow: 0 5px 12px rgba(20, 90, 130, 0.3);
+}
+
+.chat2 > button:active {
+  transform: scale(0.97);
 }
 
 /* the <p> inside the done button: no paragraph spacing, just the button's own text */
@@ -52,28 +87,34 @@
   font: inherit;
 }
 
-/* ---------- "Start Tally" button ----------
-   It has no class in the JSX yet, so add className={styles.tallyBtn} to it. */
+/* ---------- "Start Tally" button ---------- */
 .tallyBtn {
   display: block;
   margin: 16px auto;
   padding: 10px 26px;
-  border: 0;
+  border: 1px solid #ffffff;
   border-radius: 999px;
-  background: #5365c9;
+  background: #F5A9B8;
   color: #fff;
   font: 600 15px Inter, system-ui, sans-serif;
-  box-shadow: 0 6px 16px rgba(83, 101, 201, 0.28);
+  text-shadow: 0 1px 2px rgba(190, 90, 115, 0.45);
+  box-shadow:
+    0 2px 4px rgba(190, 90, 115, 0.2),
+    0 8px 18px rgba(190, 90, 115, 0.32);
   cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .tallyBtn:hover {
-  background: #4252a8;
+  background: #f7bcc8;
+  box-shadow:
+    0 3px 6px rgba(190, 90, 115, 0.22),
+    0 12px 24px rgba(190, 90, 115, 0.36);
 }
 
 .tallyBtn:active {
   transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(190, 90, 115, 0.3);
 }
 
 .tallyBtn > p {
@@ -83,17 +124,20 @@
   font: inherit;
 }
 
-/* ---------- the user's own message (same look everywhere it appears) ---------- */
+/* ---------- the user's own message (pink) ---------- */
 .userTextBox {
   width: fit-content;
   max-width: min(82%, 520px);
   margin: 10px 0 10px auto;
   padding: 12px 18px;
   box-sizing: border-box;
-  background: #5365c9;
-  border: 1px solid #5365c9;
+  background: linear-gradient(180deg, #f8bdc9 0%, #F5A9B8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 20px 20px 6px 20px; /* tail on the bottom right */
-  box-shadow: 0 4px 16px rgba(83, 101, 201, 0.25);
+  box-shadow:
+    0 2px 4px rgba(190, 90, 115, 0.2),
+    0 10px 24px rgba(190, 90, 115, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .userchat {
@@ -105,6 +149,7 @@
   line-height: 1.6;
   white-space: pre-line;
   overflow-wrap: anywhere;
+  text-shadow: 0 1px 2px rgba(190, 90, 115, 0.4);
 }
 
 /* the "Result: ..." line right after the user's message becomes a small centered divider */
@@ -116,29 +161,42 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8a93b3;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(20, 90, 130, 0.4);
 }
 
-/* ---------- reply options: quick-reply pills on the right ---------- */
+/* ---------- reply options: quick-reply pills on the right (the user's side, so pink) ---------- */
 .btn {
   display: block;
   width: fit-content;
   max-width: min(82%, 520px);
   margin: 6px 0 6px auto;
   padding: 10px 18px;
-  background: #fff;
-  border: 1.5px solid #5365c9;
+  background: #F5A9B8;
+  border: 1.5px solid #ffffff;
   border-radius: 999px;
-  color: #5365c9;
+  color: #ffffff;
   font: 600 15px/1.3 Inter, system-ui, sans-serif;
   text-align: left;
+  text-shadow: 0 1px 2px rgba(190, 90, 115, 0.4);
+  box-shadow:
+    0 2px 4px rgba(190, 90, 115, 0.2),
+    0 6px 14px rgba(190, 90, 115, 0.28);
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .btn:hover {
-  background: #5365c9;
-  color: #fff;
+  background: #f7bcc8;
+  box-shadow:
+    0 3px 6px rgba(190, 90, 115, 0.22),
+    0 10px 20px rgba(190, 90, 115, 0.34);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(190, 90, 115, 0.3);
 }
 
 /* ---------- kept from before (not used in the JSX right now) ---------- */
@@ -151,7 +209,7 @@
   display: inline;
   margin: 0;
   padding: 0;
-  color: #5365c9;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -161,8 +219,8 @@
   font-size: 21px;
   line-height: 1.4;
   font-weight: 650;
-  color: #5365c9;
-  border-bottom: 1px solid #e8eaf5;
+  color: #ffffff;
+  border-bottom: 1px solid #F5A9B8;
 }
 
 @media (max-width: 600px) {

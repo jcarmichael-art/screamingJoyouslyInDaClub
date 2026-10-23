@@ -1,9 +1,27 @@
+/* Trans flag palette
+   blue:  #5BCEFA
+   pink:  #F5A9B8
+   white: #FFFFFF
+*/
+
 .calendar {
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  color: #293247;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #7bd9fb 0%, #5BCEFA 100%);
+  color: #ffffff;
   font-family: var(--sans);
+  border: 2px solid #F5A9B8;
+  /* pink glow: a tight bright halo, then wider soft ones fading outward */
+  box-shadow:
+    0 0 6px rgba(245, 169, 184, 0.9),
+    0 0 18px rgba(245, 169, 184, 0.7),
+    0 0 40px rgba(245, 169, 184, 0.5),
+    0 0 80px rgba(245, 169, 184, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .calendarHeader {
@@ -19,6 +37,8 @@
   font-size: clamp(1.15rem, 2.4vw, 1.45rem);
   font-weight: 700;
   text-align: center;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(20, 90, 130, 0.35);
 }
 
 .calendarHeader button {
@@ -27,17 +47,25 @@
   height: 38px;
   flex: 0 0 38px;
   place-items: center;
-  border: 1px solid #e4e8f3;
+  border: 1px solid #ffffff;
   border-radius: 12px;
-  background: #fff;
-  color: #626f8a;
+  background: #F5A9B8;
+  color: #ffffff;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  box-shadow: 0 3px 8px rgba(20, 90, 130, 0.25);
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
-.calendarHeader button:hover { background: #f0f2ff; border-color: #d8ddff; color: #5868d5; }
-.calendarHeader button:active { transform: scale(0.96); }
+.calendarHeader button:hover {
+  background: #f7bcc8;
+  border-color: #ffffff;
+  box-shadow: 0 5px 12px rgba(20, 90, 130, 0.3);
+}
+.calendarHeader button:active {
+  transform: scale(0.96);
+  box-shadow: 0 1px 3px rgba(20, 90, 130, 0.3);
+}
 
 .weekdayGrid, .daysGrid {
   display: grid;
@@ -47,41 +75,48 @@
 
 .weekday {
   padding: 5px 0 10px;
-  color: #8b94a9;
+  color: #ffffff;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.035em;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(20, 90, 130, 0.3);
 }
 
+/* Day cells: pink border, white text */
 .daysGrid > *, .daysGrid > div {
   min-width: 0;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e8ebf4;
+  border: 2px solid #F5A9B8;
   border-radius: 13px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #46516a;
+  background: rgba(30, 140, 190, 0.35);
+  color: #ffffff;
   font: inherit;
   font-size: 0.94rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(20, 90, 130, 0.4);
+  box-shadow: 0 2px 5px rgba(20, 90, 130, 0.18);
   transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .daysGrid .otherMonth {
   border-color: transparent;
-  background: rgba(244, 246, 251, 0.62);
-  color: #b7bece;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: none;
+  box-shadow: none;
 }
 
 .daysGrid > .today {
-  border: 1px solid #7887ef;
-  background: #eef0ff;
-  color: #4f60cf;
+  border: 2px solid #ffffff;
+  background: #F5A9B8;
+  color: #ffffff;
   font-weight: 750;
-  box-shadow: inset 0 0 0 1px rgba(120, 135, 239, 0.12);
+  box-shadow: 0 4px 10px rgba(20, 90, 130, 0.3);
 }
 
 .daysGrid > div:has(> button) { padding: 0; overflow: hidden; }
@@ -94,36 +129,33 @@
   background: transparent;
   color: inherit;
   font: inherit;
+  text-shadow: inherit;
   cursor: pointer;
 }
 
 .daysGrid > div:has(> button):hover {
-  border-color: #cbd2ff;
-  background: #f4f5ff;
-  box-shadow: 0 4px 12px rgba(83, 101, 210, 0.08);
+  border-color: #ffffff;
+  background: rgba(245, 169, 184, 0.45);
+  box-shadow: 0 6px 14px rgba(20, 90, 130, 0.3);
 }
-.daysGrid > div.today:hover { background: #e5e9ff; }
-.daysGrid > div > button:focus-visible { outline-offset: -4px; }
+.daysGrid > div.today:hover { background: #f7bcc8; }
+.daysGrid > div > button:focus-visible { outline: 3px solid #ffffff; outline-offset: -4px; }
 
 /* ================================================================
    Modal
    ================================================================ */
 
-/* Backdrop with blur (not used by the JSX right now; the dimming
-   below comes from the big shadow on .container instead) */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(31, 40, 67, 0.24);
+  background: rgba(20, 70, 100, 0.3);
   -webkit-backdrop-filter: blur(7px) saturate(115%);
   backdrop-filter: blur(7px) saturate(115%);
   animation: backdropIn 180ms ease-out both;
 }
 
-/* The frosted-glass panel. A grid with a gap keeps every section
-   evenly spaced, so the four blocks (title, task form, task list,
-   buttons) read as separate groups. */
+/* Blue panel that floats above the dimmed page */
 .container {
   position: fixed;
   top: 50%;
@@ -138,37 +170,38 @@
   max-height: min(86vh, 780px);
   overflow-y: auto;
   padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.78);
-  color: #293247;
+  background: linear-gradient(180deg, #7bd9fb 0%, #5BCEFA 100%);
+  color: #ffffff;
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.4;
   box-shadow:
-    0 0 0 100vmax rgba(31, 40, 67, 0.24),            /* dims the page behind */
-    0 28px 90px rgba(27, 38, 76, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  -webkit-backdrop-filter: blur(28px) saturate(150%);
-  backdrop-filter: blur(28px) saturate(150%);
+    0 0 0 100vmax rgba(20, 70, 100, 0.35),           /* dims the page behind */
+    0 4px 8px rgba(20, 90, 130, 0.25),
+    0 18px 40px rgba(20, 90, 130, 0.35),
+    0 36px 90px rgba(20, 90, 130, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   animation: modalIn 200ms cubic-bezier(.2,.8,.2,1) both;
 }
 
-/* Title: the date, with a small label above it */
 .container h1 {
   margin: 0 44px 0 0;
-  color: #293247;
+  color: #ffffff;
   font-size: 1.45rem;
   line-height: 1.25;
   font-weight: 750;
   overflow-wrap: anywhere;
+  text-shadow: 0 1px 3px rgba(20, 90, 130, 0.35);
 }
 .container h1::before {
   content: "Day breakdown";
   display: block;
   margin-bottom: 4px;
-  color: #8b94a9;
+  color: #ffffff;
+  opacity: 0.85;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -184,21 +217,23 @@
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(218, 224, 239, 0.95);
+  border: 1px solid #ffffff;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.72);
-  color: #68738b;
+  background: #F5A9B8;
+  color: #ffffff;
   font: inherit;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  box-shadow: 0 3px 8px rgba(20, 90, 130, 0.25);
+  transition: background 150ms ease, transform 150ms ease;
 }
-.container > button:first-child:hover { background: #eef0ff; color: #4f60cf; }
+.container > button:first-child:hover { background: #f7bcc8; }
+.container > button:first-child:active { transform: scale(0.96); }
 
-/* Small section labels (edit the text here if you want different wording) */
 .options::before,
 .taskBox::before {
   grid-column: 1 / -1;
-  color: #8b94a9;
+  color: #ffffff;
+  opacity: 0.85;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -214,7 +249,6 @@
   text-transform: none;
 }
 
-/* Task form: text box + level picker on one row */
 .options {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 76px;
@@ -226,21 +260,20 @@
   width: 100%;
   margin: 0;
   padding: 11px 13px;
-  border: 1px solid #dfe4f0;
+  border: 1px solid #ffffff;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.92);
   color: #293247;
   font: inherit;
   outline: none;
+  box-shadow: inset 0 2px 4px rgba(20, 90, 130, 0.15);
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 .container input:focus, .container select:focus {
-  border-color: #8794f1;
-  box-shadow: 0 0 0 3px rgba(102, 120, 232, 0.13);
+  border-color: #F5A9B8;
+  box-shadow: 0 0 0 3px rgba(245, 169, 184, 0.55);
 }
 
-/* Task list: one row per task, with the level as a small badge.
-   The row you clicked stays highlighted while it has focus. */
 .taskBox {
   display: grid;
   gap: 8px;
@@ -255,16 +288,17 @@
   align-items: center;
   gap: 10px;
   padding: 3px 12px 3px 3px;
-  border: 1px solid #e2e6f1;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 3px 8px rgba(20, 90, 130, 0.18);
   transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
-.taskBox > div:hover { background: #f4f5ff; border-color: #d8ddff; }
+.taskBox > div:hover { background: #ffffff; border-color: #F5A9B8; }
 .taskBox > div:focus-within {
-  background: #eef0ff;
-  border-color: #7887ef;
-  box-shadow: 0 0 0 3px rgba(102, 120, 232, 0.13);
+  background: #fff5f7;
+  border-color: #F5A9B8;
+  box-shadow: 0 0 0 3px rgba(245, 169, 184, 0.55);
 }
 
 .taskBox a { display: block; min-width: 0; }
@@ -274,7 +308,7 @@
   border: 0;
   border-radius: 11px;
   background: transparent;
-  color: #3b4660;
+  color: #293247;
   font: inherit;
   text-align: left;
   overflow-wrap: anywhere;
@@ -285,16 +319,14 @@
   margin: 0;
   padding: 3px 10px;
   border-radius: 999px;
-  background: #eef0ff;
-  color: #4f60cf;
+  background: #F5A9B8;
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
   white-space: nowrap;
 }
 
-/* Action buttons: Save is the main action, Edit and Complete sit side by
-   side, Delete is full width at the bottom in a warning color.
-   (They are styled by position: 1 Save, 2 Delete, 3 Edit, 4 Complete.) */
+/* Action buttons (styled by position: 1 Save, 2 Delete, 3 Edit, 4 Complete) */
 .buttonBox {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -303,48 +335,49 @@
 
 .buttonBox > button {
   padding: 11px 14px;
-  border: 1px solid #dfe4f0;
+  border: 1px solid #ffffff;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.82);
-  color: #4d5b7b;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f6f95;
   font: inherit;
   font-size: 0.9rem;
   font-weight: 650;
   cursor: pointer;
-  transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+  box-shadow: 0 4px 10px rgba(20, 90, 130, 0.22);
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
 }
-.buttonBox > button:hover:not(:disabled) { background: #f0f2ff; border-color: #cbd2ff; }
-.buttonBox > button:active:not(:disabled) { transform: scale(0.98); }
-.buttonBox > button:disabled { opacity: 0.45; cursor: not-allowed; }
-.buttonBox > button:focus-visible { outline: 3px solid rgba(102, 120, 232, 0.35); outline-offset: 2px; }
+.buttonBox > button:hover:not(:disabled) { background: #ffffff; box-shadow: 0 6px 14px rgba(20, 90, 130, 0.3); }
+.buttonBox > button:active:not(:disabled) { transform: scale(0.98); box-shadow: 0 2px 5px rgba(20, 90, 130, 0.3); }
+.buttonBox > button:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+.buttonBox > button:focus-visible { outline: 3px solid #ffffff; outline-offset: 2px; }
 
 .buttonBox > button:nth-of-type(1) {            /* Save New Task */
   order: 1;
   grid-column: 1 / -1;
-  border-color: #5365c9;
-  background: #5365c9;
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(83, 101, 201, 0.28);
+  border-color: #ffffff;
+  background: #F5A9B8;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(190, 90, 115, 0.4);
 }
-.buttonBox > button:nth-of-type(1):hover:not(:disabled) { background: #4252a8; border-color: #4252a8; }
+.buttonBox > button:nth-of-type(1):hover:not(:disabled) { background: #f7bcc8; border-color: #ffffff; }
 
 .buttonBox > button:nth-of-type(3) { order: 2; }  /* Submit Edit */
 
 .buttonBox > button:nth-of-type(4) {            /* Mark Complete */
   order: 3;
-  border-color: #cde8dc;
-  color: #2c8a64;
+  border-color: #ffffff;
+  color: #1f6f95;
 }
-.buttonBox > button:nth-of-type(4):hover:not(:disabled) { background: #eaf8f1; border-color: #9fd6bc; }
 
 .buttonBox > button:nth-of-type(2) {            /* Delete Selected Task */
   order: 4;
   grid-column: 1 / -1;
-  border-color: #f1d2d9;
+  border-color: #ffffff;
   background: transparent;
-  color: #c24861;
+  color: #ffffff;
+  box-shadow: none;
 }
-.buttonBox > button:nth-of-type(2):hover:not(:disabled) { background: #fdeff2; border-color: #e8a9b8; }
+.buttonBox > button:nth-of-type(2):hover:not(:disabled) { background: rgba(245, 169, 184, 0.55); border-color: #ffffff; box-shadow: 0 4px 10px rgba(20, 90, 130, 0.25); }
 
 /* Status messages (loading / success / error) */
 .buttonBox > p {
@@ -353,8 +386,8 @@
   margin: 0;
   padding: 9px 12px;
   border-radius: 10px;
-  background: #eef0ff;
-  color: #4f60cf;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f6f95;
   font-size: 0.88rem;
   text-align: center;
   overflow-wrap: anywhere;
@@ -364,6 +397,7 @@
 @keyframes modalIn { from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(0.985); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
 
 @media (max-width: 480px) {
+  .calendar { padding: 16px; border-radius: 20px; }
   .container { gap: 16px; padding: 22px 16px; border-radius: 20px; }
   .weekday { font-size: 0.66rem; }
   .daysGrid > *, .daysGrid > div { border-radius: 9px; font-size: 0.86rem; }

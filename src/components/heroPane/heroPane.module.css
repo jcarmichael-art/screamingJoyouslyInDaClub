@@ -1,3 +1,9 @@
+/* Trans flag palette
+   blue:  #5BCEFA
+   pink:  #F5A9B8
+   white: #FFFFFF
+*/
+
 .container {
   display: flex;
   align-items: flex-start;
@@ -8,24 +14,48 @@
   font-family: var(--sans);
 }
 
+/* Side nav panel: blue, raised off the page */
 .NavButtons {
   flex: 0 0 172px;
   padding: 12px;
-  border: 1px solid rgba(226, 231, 242, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: var(--shadow-sm);
+  background: linear-gradient(180deg, #7bd9fb 0%, #5BCEFA 100%);
+  color: #ffffff;
+  box-shadow:
+    0 2px 4px rgba(20, 90, 130, 0.2),
+    0 10px 24px rgba(20, 90, 130, 0.28),
+    0 24px 50px rgba(20, 90, 130, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
+/* Main pane: the same blue gradient as the calendar panel */
 .HeroPane {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   min-width: 0;
   min-height: 420px;
   padding: 28px;
-  border: 1px solid rgba(226, 231, 242, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(180deg, #7bd9fb 0%, #5BCEFA 100%);
+  color: #ffffff;
+  box-shadow:
+    0 2px 4px rgba(20, 90, 130, 0.2),
+    0 14px 32px rgba(20, 90, 130, 0.3),
+    0 34px 80px rgba(20, 90, 130, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* the small loading / success message inside the pane:
+   pushed to the bottom and centered */
+.HeroPane > p {
+  margin: auto 0 0;
+  padding-top: 16px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(20, 90, 130, 0.4);
 }
 
 @media (max-width: 700px) {
