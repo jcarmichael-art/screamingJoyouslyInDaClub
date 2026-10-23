@@ -64,7 +64,7 @@ export default function HeroPane()
         </div>
 
         <div className={Styles.HeroPane}>
-        {hero === 'chat' ? <Chat2 chats={chats} tasks={tasks} setReload={setReload} /> : <div></div>}
+        {hero === 'chat' ? <Chat2 chats={chats} todayTasks={tasks} setReload={setReload} /> : <div></div>}
         {hero === 'calendar' ? <Calendar tasks={tasks} setReload={setReload}/> : <div></div>}
         {save && <p>{save}</p>}        
         </div>

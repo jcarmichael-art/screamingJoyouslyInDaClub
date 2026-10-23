@@ -10,15 +10,16 @@ export default function Tally({chat, todayTasks, sendUpdate, setReload})
     
     const [flag, setFlag] = useState(null);
     function checkWin()
-    {
+    {        console.log(todayTasks)
         let count = 0
         let maxCount = 0
-        for (let i = 0; i < tasks.length; i++)
+        for (let i = 0; i < todayTasks.length; i++)
         {
             if (todayTasks[i].data_json.date === chat.data_json.date)
             {
                 count += Number(todayTasks[i].data_json.points);
                 maxCount += Number(todayTasks[i].data_json.level);
+
             }
         }
 
@@ -35,6 +36,7 @@ export default function Tally({chat, todayTasks, sendUpdate, setReload})
     {
         return (
             <>
+            pass
             <div className={styles.chat2}>
             <p>{chat.data_json.results[chat.data_json.choice][0]}</p>
             <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload, setTasks)}>
@@ -48,6 +50,7 @@ export default function Tally({chat, todayTasks, sendUpdate, setReload})
     {
         return (
             <>
+            fail
             <div className={styles.chat2}>
             <p>{chat.data_json.results[chat.data_json.choice][1]}</p>
             <button onClick={() => sendUpdate(chat, {'type': 'chat', 'story': chat.data_json.story, 'options': chat.data_json.options, 'results': chat.data_json.results, 'choice': '', 'date': ''}, setSave, setError, setReload, setTasks)}>
