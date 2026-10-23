@@ -23,6 +23,11 @@ export default function Tally({chat, todayTasks, sendUpdate, setReload})
             }
         }
 
+        if (maxCount === 0)
+        {
+            setFlag(false)
+            return
+        }
         if (count >= maxCount * .75)
         {
             setFlag(true)
