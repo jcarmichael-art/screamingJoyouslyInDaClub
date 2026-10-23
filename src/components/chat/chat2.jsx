@@ -28,11 +28,7 @@ export default function Chat2({chats, todayTasks, setReload}) {
     const [tasks, setTasks] = useState('');
 
 
-
-    //const [random, setRandom] = useState(() => getRandomChat(chats))
-    let random = getRandomChat(chats)
-
-    
+    const [random, setRandom] = useState(() => getRandomChat(chats))
 
 
     function makeString(year, month, day)
